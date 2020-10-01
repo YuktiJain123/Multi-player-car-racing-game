@@ -16,7 +16,7 @@ this.distance=0;
         })
     }
     update(){
-        var playerIndex="player"+this.index;
+        var playerIndex="players/player"+this.index;
         database.ref(playerIndex).set({
             name:this.name,
             distance:this.distance

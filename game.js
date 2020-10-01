@@ -12,11 +12,17 @@ getState(){
         database.ref('/').update({
             gameState:State
         })
-    } 
-    start(){
+    }
+         async start(){
         if(gameState===0){
             player=new Player();
-            player.getCount();
+            var playerCountRef=await database.ref('playerCount').once("value");
+
+            if(playerCountRef.exists()) {
+             playerCount=playerCountRef.val(); 
+             player.getCount();
+            }
+           
             form=new Form();
             form.display();
         }
@@ -42,7 +48,7 @@ getState(){
                 text(allPlayers[plr].name+":"+allPlayers[plr].distance,120,displayPosition);
             }}
             
-            if (keyIsDown(UP_ARROW)&&player.index!==1){
+            if (keyIsDown(UP_ARROW)&&player.index!==null){
                 player.distance+=50;
                 player.update()
             

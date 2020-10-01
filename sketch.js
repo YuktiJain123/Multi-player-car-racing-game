@@ -8,7 +8,7 @@ var allPlayers;
 function setup(){
   database = firebase.database();
   console.log(database);
-  createCanvas(2000,2000);
+  createCanvas(displayWidth-20,displayHeight-20);
   game=new Game();
   game.getState();
   game.start();
